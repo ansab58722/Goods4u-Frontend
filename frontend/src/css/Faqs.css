@@ -1,0 +1,69 @@
+/* Faqs.css */
+.faqs-section {
+    padding: 3rem 1rem;
+    background: var(--bg-primary);
+}
+
+.faqs-container {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.faq-item {
+    background: var(--bg-secondary);
+    border-radius: 8px;
+    border: 1px solid var(--primary-light);
+    cursor: pointer;
+    overflow: hidden;
+    transition: all 0.3s ease-in-out;
+}
+
+.faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem;
+}
+
+.faq-question h4 {
+    margin: 0;
+    font-size: 1.1rem;
+    color: var(--text-dark);
+    font-weight: 600;
+}
+
+.faq-question .svg-inline--fa {
+    color: var(--primary);
+    font-size: 1.2rem;
+    transition: transform 0.3s ease;
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-in-out, padding 0.4s ease;
+    padding: 0 1.25rem;
+}
+
+.faq-answer p {
+    margin: 0;
+    color: var(--text-light);
+    line-height: 1.6;
+    padding-bottom: 1.25rem;
+}
+
+/* Open State */
+.faq-item.open {
+    background: var(--bg-primary);
+}
+
+.faq-item.open .faq-question .svg-inline--fa {
+    transform: rotate(180deg);
+}
+
+.faq-item.open .faq-answer {
+    max-height: 200px; /* Adjust as needed */
+} 

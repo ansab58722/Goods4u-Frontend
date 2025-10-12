@@ -1,0 +1,105 @@
+/* CustomerReviews.css */
+.reviews-section {
+    padding: 4rem 2rem;
+    font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+}
+
+.lp-section-gray {
+    background: var(--gradient-secondary);
+}
+
+.lp-section-title {
+    text-align: center;
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 2.5rem;
+}
+
+.C_reviews_Swiper {
+    width: 100%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.C_reviews_Swiper .swiper-slide {
+    background-position: center;
+    background-size: cover;
+    width: 320px;
+    height: 420px;
+}
+
+.review-card {
+    background: var(--bg-primary);
+    border-radius: 18px;
+    box-shadow: var(--shadow-lg);
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100%;
+    transition: transform 0.3s;
+}
+
+.review-card:hover {
+    transform: translateY(-10px);
+}
+
+.review-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.review-avatar {
+    width: 90px;
+    height: 90px;
+    border-radius: 50%;
+    border: 4px solid var(--primary);
+    margin-bottom: 1rem;
+    object-fit: cover;
+}
+
+.review-info h4 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    margin: 0 0 0.25rem 0;
+}
+
+.star-rating {
+    color: #ffc107;
+    font-size: 1.1rem;
+}
+
+.review-text {
+    font-size: 1rem;
+    line-height: 1.6;
+    color: var(--text-light);
+    font-style: italic;
+}
+
+/* Swiper Navigation/Pagination */
+.C_reviews_Swiper .swiper-button-next,
+.C_reviews_Swiper .swiper-button-prev {
+    color: var(--text-dark) !important;
+    font-weight: bold;
+    transform: scale(0.8);
+}
+
+.C_reviews_Swiper .swiper-pagination-bullet-active {
+    background: var(--text-dark) !important;
+}
+
+@media (max-width: 768px) {
+    .reviews-section {
+        padding: 3rem 1rem;
+    }
+    .C_reviews_Swiper .swiper-slide {
+        width: 280px;
+        height: 380px;
+    }
+} 

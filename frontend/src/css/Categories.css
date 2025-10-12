@@ -1,0 +1,168 @@
+
+.Categoriesmain {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  height: fit-content;
+  justify-content: center;
+  gap: 1rem;
+  padding: 2rem 1rem;
+  background-color: #ffffff;
+}
+
+/* Category Link Styling */
+.category-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  width: fit-content;
+  height: fit-content;
+}
+
+.category-link:hover {
+  text-decoration: none;
+  color: inherit;
+}
+
+
+.cat1layer, .cat2layer, .cat3layer {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  height: 400px;
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.cat1layer:hover, .cat2layer:hover, .cat3layer:hover {
+  background-color: rgba(17, 17, 17, 0.3);
+  transition: background-color 0.3s ease;
+}
+.Cat1 {
+  width: 54vw;
+  background: url(../../public/Images/footwears.jpg) no-repeat;
+  background-size: cover;
+  background-position: 15%;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.Cat2 {
+  width: 43vw;
+  background: url(../../public/Images/watches.jpg) no-repeat;
+  background-size: cover;
+  background-position: center;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.Cat3 {
+  width: 70vw;
+  background: url(../../public/Images/cloths.jpg) no-repeat;
+  background-size: cover;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.cat1wrapper, .cat2wrapper, .cat3wrapper {
+  display: flex;
+  background: linear-gradient(135deg, #FFFFFF 0%, #F8F7FF 100%);
+  align-items: center;
+  justify-content: center;
+  width: 160px;
+  height: 60px;
+  position: relative;
+  top: 90px;
+  border: 2px solid #E8E2F4;
+  border-radius: 12px;
+  transition: all ease-in-out 0.3s;
+  box-shadow: 0 4px 16px rgba(126, 87, 194, 0.08);
+}
+
+.cat1wrapper:hover, .cat2wrapper:hover, .cat3wrapper:hover {
+  background: linear-gradient(135deg, #7E57C2 0%, #5E35B1 100%);
+  color: white;
+  border: 2px solid #7E57C2;
+  transition: all ease-in-out 0.3s;
+  transform: translateY(-5px);
+  box-shadow: 0 8px 24px rgba(126, 87, 194, 0.3);
+}
+
+.cat1wrapper:hover h1, .cat2wrapper:hover h1, .cat3wrapper:hover h1 {
+  color: white;
+}
+
+.cat1wrapper h1, .cat2wrapper h1, .cat3wrapper h1 {
+  font-size: var(--text-xl);
+  font-weight: var(--font-weight-semibold);
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  color: var(--text-dark);
+  transition: color 0.3s ease;
+}
+
+.cat3layer:hover > .cat3wrapper, .cat2layer:hover > .cat2wrapper,
+.cat1layer:hover > .cat1wrapper {
+  top: 50px;
+  transition: all ease-in-out 0.6s;
+}
+
+/* Mobile Responsive Design */
+@media screen and (max-width: 768px) {
+  .Categoriesmain {
+    padding: 1rem 0.5rem;
+    gap: 0.5rem;
+  }
+  
+  .Cat1, .Cat2, .Cat3 {
+    width: 90vw;
+    height: 30vh;
+  }
+  
+  .cat1layer, .cat2layer, .cat3layer {
+    height: 30vh;
+  }
+  
+  .cat1wrapper, .cat2wrapper, .cat3wrapper {
+    width: 120px;
+    height: 50px;
+    top: 60px;
+  }
+  
+  .cat1wrapper h1, .cat2wrapper h1, .cat3wrapper h1 {
+    font-size: var(--text-lg);
+  }
+  
+  .Cat3 {
+    background-position: center;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .Categoriesmain {
+    padding: 0.5rem;
+    gap: 0.25rem;
+  }
+  
+  .Cat1, .Cat2, .Cat3 {
+    width: 95vw;
+    height: 25vh;
+  }
+  
+  .cat1layer, .cat2layer, .cat3layer {
+    height: 25vh;
+  }
+  
+  .cat1wrapper, .cat2wrapper, .cat3wrapper {
+    width: 100px;
+    height: 40px;
+    top: 40px;
+  }
+  
+  .cat1wrapper h1, .cat2wrapper h1, .cat3wrapper h1 {
+    font-size: var(--text-base);
+  }
+}
