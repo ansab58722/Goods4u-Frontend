@@ -197,11 +197,11 @@ const Landingpage = () => {
      
         <Faqs/>
   <CustomerReviews/>
-    <console className="log">gyjuhygjhg</console>
+    
 
       <Footer/>
     </div>
-    //end of page
+ 
   )
 }
 
