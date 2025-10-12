@@ -201,6 +201,7 @@ const Landingpage = () => {
 
       <Footer/>
     </div>
+    //end of page
   )
 }
 
