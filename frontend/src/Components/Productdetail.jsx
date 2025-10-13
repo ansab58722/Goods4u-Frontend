@@ -129,7 +129,7 @@ if (!fetched_product || fetched_product.length === 0) return window.history.back
           <span className="breadcrumb-separator">/</span>
           <a href="/allproducts" className="breadcrumb-link">Products</a>
           <span className="breadcrumb-separator">/</span>
-          <span className="breadcrumb-current">{product.name}</span>
+          <span className="breadcrumb-current" title={product.name}>{product.name}</span>
         </div>
       </div>
 
@@ -207,7 +207,7 @@ if (!fetched_product || fetched_product.length === 0) return window.history.back
         {/* Product Details */}
         <div className="product-details">
           <div className="product-header">
-            <h1 className='productdetailname'>{product.name}</h1>
+            <h1 className='productdetailname' title={product.name}>{product.name}</h1>
             <div className="product-rating">
               <StarRating rating={4.5} />
               <span className="rating-text">4.5 (128 reviews)</span>
