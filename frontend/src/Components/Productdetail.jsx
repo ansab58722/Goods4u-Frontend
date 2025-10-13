@@ -119,7 +119,7 @@ setAllproductimagesofvarient(product?.colors?.[0]?.images)
 //console.log(product)
 if (!fetched_product || fetched_product.length === 0) return window.history.back();
   return (
-    <div className="mainproductdetail">
+    <div className="Product-details-mainproductdetail">
       <Navbardesktop />
 
       {/* Breadcrumb Navigation */}
@@ -142,12 +142,12 @@ if (!fetched_product || fetched_product.length === 0) return window.history.back
         </div>
       </div>
 
-      <div className="mainproductdetailwrapper">
+      <div className="Product-details-mainproductdetailwrapper">
         {/* Product Gallery */}
-        <div className="product-gallery">
-          <div className="main-image-container">
+        <div className="Product-details-product-gallery">
+          <div className="Product-details-main-image-container">
             <img
-              className={`productmainimage ${isImageZoomed ? 'zoomed' : ''}`}
+              className={`Product-details-productmainimage ${isImageZoomed ? 'zoomed' : ''}`}
               src={mainimg}
               alt="Product"
               onMouseEnter={() => setIsImageZoomed(true)}
@@ -278,15 +278,15 @@ if (!fetched_product || fetched_product.length === 0) return window.history.back
           </div>
 
           {/* Action Buttons */}
-          <div className="action-buttons">
+          <div className="Product-details-action-buttons">
             <button
-              className={`addtocartbutn ${isAddedToCart ? 'success' : ''}`}
+              className={`Product-details-addtocartbutn ${isAddedToCart ? 'success' : ''}`}
               onClick={handleAddToCart}
             >
               <FontAwesomeIcon icon={faShoppingCart} />
               {isAddedToCart ? 'Added to Cart!' : 'Add to Cart'}
             </button>
-            <button className="buy-now-btn">
+            <button className="Product-details-buy-now-btn">
               Buy Now
             </button>
           </div>
