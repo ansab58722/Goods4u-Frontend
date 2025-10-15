@@ -61,7 +61,7 @@ const StarRating = ({ rating }) => {
                     breakpoints={{
                         400: {
                             slidesPerView: 1,
-                            spaceBetween: 0,
+                            spaceBetween: 15,
                             centeredSlides: true,
                         },
                         640: {
