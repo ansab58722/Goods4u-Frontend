@@ -2,7 +2,6 @@ import { useState, useEffect, useRef } from "react";
 import { motion, useInView } from "motion/react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "../css/Productcard.css";
 import { Pagination, Navigation } from "swiper/modules";
@@ -227,7 +226,6 @@ const Productcards = ({ Data, category }) => {
         <Swiper
         initialSlide={0}
         navigation
-        pagination={{ clickable: true }}
         breakpoints={{
           500: {
             slidesPerView: 1,

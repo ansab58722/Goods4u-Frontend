@@ -138,7 +138,7 @@ const Footer = () => {
             animate={isInView ? { y: 0, opacity: 1 } : { y: 20, opacity: 0 }}
             transition={{ duration: 0.6, delay: 1.2 }}
           >
-            <p><FontAwesomeIcon icon={faMapMarkerAlt} /> 123 Fashion Street, New York, NY 10001</p>
+            <p><FontAwesomeIcon icon={faMapMarkerAlt} /> Fashion Street, New York, NY 10001</p>
             <p><FontAwesomeIcon icon={faPhone} /> +1 234 567 890</p>
             <p><FontAwesomeIcon icon={faEnvelope} /> info@goods4u.com</p>
           </motion.div>

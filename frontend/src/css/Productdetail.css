@@ -58,7 +58,7 @@ body {
     animation: float 20s ease-in-out infinite;
 }
 
-.hero-content {
+.productDetail-hero-content {
     text-align: center;
     color: #FFFFFF !important;
     z-index: 2;
@@ -67,7 +67,7 @@ body {
     max-width: 100%;
 }
 
-.hero-content h1 {
+.productDetail-hero-content h1 {
     font-size: 3rem;
     font-weight: 800;
     margin-bottom: 10px;
@@ -77,7 +77,7 @@ body {
     word-wrap: break-word;
 }
 
-.hero-content p {
+.productDetail-hero-content p {
     font-size: 1.2rem;
     opacity: 0.9;
     font-weight: 300;
@@ -839,11 +839,11 @@ body {
 }
 
 @media (max-width: 768px) {
-    .hero-content h1 {
+    .productDetail-hero-content h1 {
         font-size: 2rem;
     }
     
-    .hero-content p {
+    .productDetail-hero-content p {
         font-size: 1rem;
     }
     
@@ -981,11 +981,11 @@ body {
         font-size: 1.2rem;
     }
     
-    .hero-content h1 {
+    .productDetail-hero-content h1 {
         font-size: 1.8rem;
     }
     
-    .hero-content p {
+    .productDetail-hero-content p {
         font-size: 0.9rem;
     }
     

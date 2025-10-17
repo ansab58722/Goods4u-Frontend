@@ -136,7 +136,7 @@ if (!fetched_product || fetched_product.length === 0) return window.history.back
       {/* Hero Section */}
       <div className="product-hero">
         <div className="hero-background"></div>
-        <div className="hero-content">
+        <div className="productDetail-hero-content">
           <h1>Discover Your Perfect Fit</h1>
           <p>Premium quality meets exceptional comfort</p>
         </div>

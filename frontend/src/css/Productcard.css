@@ -355,12 +355,13 @@ body {
 
 .pc-featuredcard-productcard:hover::before {
   left: 100%;
+   
 }
 
 .pc-featuredcard-productcard:hover {
   box-shadow: 0 20px 40px rgba(126, 87, 194, 0.15);
   transform: translateY(-8px) scale(1.02);
-  border-color: var(--primary);
+  border: 0.5px solid var(--primary-light);
 }
 
 /* Category-specific hover effects */
@@ -436,7 +437,7 @@ body {
 }
 
 .pc-featuredcard-productimage img {
-  max-width: 50%;
+  max-width: fit-content;
   object-fit: contain;
   display: block;
   margin: 0 auto;
@@ -651,8 +652,8 @@ body {
 /* ===== RESPONSIVE DESIGN ===== */
 @media (max-width: 1050px) {
   .pc-featuredcard-productcard {
-    max-height: 400px;
-    ;
+    max-height: fit-content;
+  
     max-width: 30vw;
   }
 

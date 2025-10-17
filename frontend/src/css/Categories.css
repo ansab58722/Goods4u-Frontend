@@ -86,7 +86,7 @@
   color: white;
   border: 2px solid #7E57C2;
   transition: all ease-in-out 0.3s;
-  transform: translateY(-5px);
+  transform: translateY(-15px);
   box-shadow: 0 8px 24px rgba(126, 87, 194, 0.3);
 }
 
@@ -149,11 +149,11 @@
   
   .Cat1, .Cat2, .Cat3 {
     width: 95vw;
-    height: 25vh;
+    height: 42vh;
   }
   
   .cat1layer, .cat2layer, .cat3layer {
-    height: 25vh;
+    height: 42vh;
   }
   
   .cat1wrapper, .cat2wrapper, .cat3wrapper {

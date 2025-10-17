@@ -73,19 +73,19 @@ const AboutUs = () => {
   ];
 
   return (
-    <div className="about-us-page">
+   <div className="aboutUs-page">
       <Navbardesktop />
       
       {/* Hero Section */}
       <motion.section 
         ref={heroRef}
-        className="about-hero"
+        className="aboutUs-hero"
         initial={{ opacity: 0, y: 50 }}
         animate={isHeroInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
         transition={{ duration: 0.8 }}
       >
-        <div className="hero-background"></div>
-        <div className="hero-content">
+        <div className="aboutUs-hero-background"></div>
+        <div className="aboutUs-hero-content">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={isHeroInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
@@ -106,14 +106,14 @@ const AboutUs = () => {
       {/* Our Story Section */}
       <motion.section 
         ref={storyRef}
-        className="our-story"
+        className="aboutUs-our-story"
         initial={{ opacity: 0, y: 50 }}
         animate={isStoryInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
         transition={{ duration: 0.8 }}
       >
-        <div className="container">
-          <div className="story-content">
-            <div className="story-text">
+        <div className="aboutUs-container">
+          <div className="aboutUs-story-content">
+            <div className="aboutUs-story-text">
               <motion.h2
                 initial={{ opacity: 0, x: -30 }}
                 animate={isStoryInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
@@ -141,7 +141,7 @@ const AboutUs = () => {
               </motion.p>
             </div>
             <motion.div 
-              className="story-video"
+              className="aboutUs-story-video"
               initial={{ opacity: 0, x: 30 }}
               animate={isStoryInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 30 }}
               transition={{ duration: 0.8, delay: 0.4 }}
@@ -152,7 +152,7 @@ const AboutUs = () => {
                 muted
                 loop
                 playsInline
-                className="intro-video"
+                className="aboutUs-intro-video"
               />
             </motion.div>
           </div>
@@ -162,31 +162,31 @@ const AboutUs = () => {
       {/* Our Values Section */}
       <motion.section 
         ref={valuesRef}
-        className="our-values"
+        className="aboutUs-our-values"
         initial={{ opacity: 0, y: 50 }}
         animate={isValuesInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
         transition={{ duration: 0.8 }}
       >
-        <div className="container">
+        <div className="aboutUs-container">
           <motion.h2
-            className="section-title"
+            className="aboutUs-section-title"
             initial={{ opacity: 0, y: 30 }}
             animate={isValuesInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             Our Values
           </motion.h2>
-          <div className="values-grid">
+          <div className="aboutUs-values-grid">
             {values.map((value, index) => (
               <motion.div
                 key={index}
-                className="value-card"
+                className="aboutUs-value-card"
                 initial={{ opacity: 0, y: 30 }}
                 animate={isValuesInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                 transition={{ duration: 0.8, delay: 0.4 + (index * 0.1) }}
                 whileHover={{ y: -10, transition: { duration: 0.3 } }}
               >
-                <div className="value-icon">{value.icon}</div>
+                <div className="aboutUs-value-icon">{value.icon}</div>
                 <h3>{value.title}</h3>
                 <p>{value.description}</p>
               </motion.div>
@@ -198,37 +198,37 @@ const AboutUs = () => {
       {/* Our Team Section */}
       <motion.section 
         ref={teamRef}
-        className="our-team"
+        className="aboutUs-our-team"
         initial={{ opacity: 0, y: 50 }}
         animate={isTeamInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
         transition={{ duration: 0.8 }}
       >
-        <div className="container">
+        <div className="aboutUs-container">
           <motion.h2
-            className="section-title"
+            className="aboutUs-section-title"
             initial={{ opacity: 0, y: 30 }}
             animate={isTeamInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
             Meet Our Team
           </motion.h2>
-          <div className="team-grid">
+          <div className="aboutUs-team-grid">
             {teamMembers.map((member, index) => (
               <motion.div
                 key={index}
-                className="team-card"
+                className="aboutUs-team-card"
                 initial={{ opacity: 0, y: 30 }}
                 animate={isTeamInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                 transition={{ duration: 0.8, delay: 0.4 + (index * 0.1) }}
                 whileHover={{ y: -10, transition: { duration: 0.3 } }}
               >
-                <div className="team-image">
+                <div className="aboutUs-team-image">
                   <img src={member.image} alt={member.name} />
                 </div>
-                <div className="team-info">
+                <div className="aboutUs-team-info">
                   <h3>{member.name}</h3>
-                  <p className="team-role">{member.role}</p>
-                  <p className="team-description">{member.description}</p>
+                  <p className="aboutUs-team-role">{member.role}</p>
+                  <p className="aboutUs-team-description">{member.description}</p>
                 </div>
               </motion.div>
             ))}
@@ -238,15 +238,15 @@ const AboutUs = () => {
 
       {/* Stats Section */}
       <motion.section 
-        className="stats-section"
+        className="aboutUs-stats-section"
         initial={{ opacity: 0, y: 50 }}
         animate={isTeamInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
         transition={{ duration: 0.8, delay: 0.6 }}
       >
-        <div className="container">
-          <div className="stats-grid">
+        <div className="aboutUs-container">
+          <div className="aboutUs-stats-grid">
             <motion.div 
-              className="stat-item"
+              className="aboutUs-stat-item"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={isTeamInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
               transition={{ duration: 0.8, delay: 0.8 }}
@@ -255,7 +255,7 @@ const AboutUs = () => {
               <p>Happy Customers</p>
             </motion.div>
             <motion.div 
-              className="stat-item"
+              className="aboutUs-stat-item"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={isTeamInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
               transition={{ duration: 0.8, delay: 0.9 }}
@@ -264,7 +264,7 @@ const AboutUs = () => {
               <p>Products</p>
             </motion.div>
             <motion.div 
-              className="stat-item"
+              className="aboutUs-stat-item"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={isTeamInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
               transition={{ duration: 0.8, delay: 1.0 }}
@@ -273,7 +273,7 @@ const AboutUs = () => {
               <p>Brands</p>
             </motion.div>
             <motion.div 
-              className="stat-item"
+              className="aboutUs-stat-item"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={isTeamInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.8 }}
               transition={{ duration: 0.8, delay: 1.1 }}
