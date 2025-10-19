@@ -286,7 +286,9 @@ if (!fetched_product || fetched_product.length === 0) return window.history.back
               <FontAwesomeIcon icon={faShoppingCart} />
               {isAddedToCart ? 'Added to Cart!' : 'Add to Cart'}
             </button>
-            <button className="Product-details-buy-now-btn">
+            <button className="Product-details-buy-now-btn" 
+             onClick={() => navigate('/shoppingcart')}
+            >
               Buy Now
             </button>
           </div>

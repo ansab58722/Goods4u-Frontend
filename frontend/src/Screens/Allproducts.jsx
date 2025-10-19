@@ -47,8 +47,9 @@ const Allproducts = () => {
 
           try {
 
-            set_fetched_items(fetched_results);
-            setallitems(fetched_results);
+
+            setData(fetched_results)
+           
             setproductCategory(maincategory)
 
           } catch (error) {
@@ -153,9 +154,6 @@ const Allproducts = () => {
 
  set_fetched_items(Data);
             setallitems(Data);
-
-
-
   }, [Data]);
 
 

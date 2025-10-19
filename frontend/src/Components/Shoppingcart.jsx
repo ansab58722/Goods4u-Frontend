@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowLeft, faTruck, faTag } from '@fortawesome/free-solid-svg-icons'
 import Navbardesktop from './Navbar-desktop'
 import Footer from './Footer'
+import { useEffect } from "react"
 
 const Shoppingcart = () => {
     const items = useSelector((state) => state.cart)
@@ -12,7 +13,11 @@ const Shoppingcart = () => {
    // console.log(items)
     const dispatch = useDispatch()
     const { cart, totalPrice } = items
+useEffect(() => {
 
+window.scrollTo({ top: 0, behavior: 'smooth' })
+
+})
     return (
         <>
             <Navbardesktop />
