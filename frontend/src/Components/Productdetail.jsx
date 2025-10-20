@@ -215,9 +215,9 @@ if (!fetched_product || fetched_product.length === 0) return window.history.back
           </div>
 
           <div className="price-section">
-            <h2 className="productdetailprice">₹{product.new_price}</h2>
+            <h2 className="productdetailprice">${product.new_price}</h2>
             {product.old_price && (
-              <span className="old-price">₹{product.old_price}</span>
+              <span className="old-price">${product.old_price}</span>
             )}
             <span className="discount-badge">Save 20%</span>
           </div>
@@ -299,7 +299,7 @@ if (!fetched_product || fetched_product.length === 0) return window.history.back
               <FontAwesomeIcon icon={faTruck} />
               <div>
                 <h4>Free Shipping</h4>
-                <p>On orders over ₹500</p>
+                <p>On orders over $100</p>
               </div>
             </div>
             <div className="highlight-item">

@@ -248,6 +248,7 @@ body {
 .price-section {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 15px;
     margin-bottom: 30px;
     padding: 20px;
@@ -917,9 +918,11 @@ body {
     }
     
     .price-section {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-items: center;
+        justify-content: center;
+        gap: 25px;
     }
     
     .color-options {
