@@ -10,6 +10,7 @@ import Faqs from '../Components/Faqs.jsx'
 import Productcards from '../Components/Productcards.jsx'
 import Pc_Promo_banner from "../Components/Pc_Promo_banner";
 import VedioHero from '../Components/VedioHero.jsx'
+import Productsfetch from '../features/Productsfetch.js'
 {/*import Navbar from '../Components/Navbar'*/ }
 
 const Landingpage = () => {
@@ -23,12 +24,9 @@ const Landingpage = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        // Fetch user data
-        const userData = localStorage.getItem("User")
-        if (userData) {
-          const parsedUser = JSON.parse(userData)
-          setUser(parsedUser)
-        }
+         await Productsfetch({}, "landingpage",[{setShoesData},{setclothsData}]);
+
+/*
 
         // Try to load cached data first
         const cachedShoes = localStorage.getItem("shoesData")
@@ -77,14 +75,17 @@ const Landingpage = () => {
             const payload = data?.data ?? []
             setclothsData(payload)
             try { localStorage.setItem('clothsData', JSON.stringify(payload)) } catch (_) {}
-          })()
+          })
           fetchPromises.push(clothsPromise)
         }
 
         if (fetchPromises.length) {
           await Promise.all(fetchPromises)
         }
-      } catch (err) {
+      */}
+      
+      
+      catch (err) {
         setError(err.message)
         console.error("Error:", err)
       } finally {
@@ -180,7 +181,7 @@ const Landingpage = () => {
         fontFamily: 'Roboto, sans-serif',
       }}
 >
-      <Navbardesktop data={[...clothsData,...shoesData]} />
+     <Navbardesktop  />
       <Heroarea />
      <Categories />
 

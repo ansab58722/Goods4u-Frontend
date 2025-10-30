@@ -70,7 +70,7 @@ const Allproducts = () => {
           setproductCategory('Cloths')
           try {
             //getting data from fetch product feature
-            await Productsfetch({ setData }, "cloths");;
+            await Productsfetch({ setData }, "cloths");
             //  setShoesData(data.data)
           } catch (error) {
             console.error("Error:", error);

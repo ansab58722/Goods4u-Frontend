@@ -1,9 +1,11 @@
 
 import React from 'react'
-const Productsfetch=async({setData},category)=> {
+const Productsfetch=async({setData},category,landingfunc)=> {
 
     // Load products data from localStorage if available; otherwise fetch and cache
       try {
+
+
         const cachedShoes = localStorage.getItem('shoesData');
         const cachedCloths = localStorage.getItem('clothsData');
         let shoes = null;
@@ -54,7 +56,11 @@ switch (category) {
     
   setData(shoes);
     break;
-
+case "landingpage":
+landingfunc[0].setShoesData(shoes);
+landingfunc[1].setclothsData(cloths);
+    break;
+    
   default:
   setData(combined);
     break;
