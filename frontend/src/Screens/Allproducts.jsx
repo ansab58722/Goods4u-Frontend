@@ -3,7 +3,7 @@ import Navbardesktop from "../Components/Navbar-desktop";
 import "../css/Allproducts.css";
 import "../css/Productcard.css";
 import { useDispatch, useSelector } from "react-redux";
-import { addTocart, productselectedfeature, RelatedProductsFeature } from "../features/CartSlice";
+import { productselectedfeature, RelatedProductsFeature } from "../features/CartSlice";
 import { useLocation } from 'react-router-dom';
 import Footer from "../Components/Footer.jsx";
 import { useNavigate, Link } from "react-router-dom";

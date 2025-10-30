@@ -3,8 +3,6 @@ import React, { useEffect, useState } from 'react'
 import Navbardesktop from '../Components/Navbar-desktop.jsx'
 import Heroarea from '../Components/Heroarea.jsx' 
 import Categories from '../Components/Categories.jsx'
-
-import Bestsellers from '../Components/Bestsellers.jsx'
 import Footer from '../Components/Footer.jsx'
 import { Link } from 'react-router-dom'
 import CustomerReviews from '../Components/CustomerReviews.jsx'
