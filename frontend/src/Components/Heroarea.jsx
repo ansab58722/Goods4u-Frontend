@@ -52,7 +52,7 @@ const Heroarea = () => {
           navigation={true}
           autoplay={{
             delay: 5000,
-            disableOnInteraction: false,
+            disableOnInteraction: true,
           }}
           modules={[Pagination, Navigation, Autoplay]}
           className="Ha_mySwiper"

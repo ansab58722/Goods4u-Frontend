@@ -7,7 +7,7 @@
   justify-content: center;
   gap: 1rem;
   padding: 2rem 1rem;
-  background-color: #ffffff;
+background-color: rgb(239,239,239);
 }
 
 /* Category Link Styling */
@@ -157,10 +157,15 @@
   }
   
   .cat1wrapper, .cat2wrapper, .cat3wrapper {
-    width: 100px;
+    width: 150px;
     height: 40px;
-    top: 40px;
+    top: 60px;
   }
+  .cat3layer:hover > .cat3wrapper, .cat2layer:hover > .cat2wrapper,
+.cat1layer:hover > .cat1wrapper {
+  top: 20px;
+  transition: all ease-in-out 0.6s;
+}
   
   .cat1wrapper h1, .cat2wrapper h1, .cat3wrapper h1 {
     font-size: var(--text-base);

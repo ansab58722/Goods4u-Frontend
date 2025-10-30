@@ -4,17 +4,17 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap');
 .pc-featured-product-banner {
-  background:rgb(252, 250, 250);
+  background:rgb(239,239,239);
   
-  margin: 80px auto;
-  padding: 10px;
+
+
   overflow: hidden;
  
   position: relative;
 
   min-height: 400px;
   max-width: 1400px;
-  width: 95%;
+  width: 100%;
 }
 
 .pc-featured-content {
@@ -606,11 +606,7 @@
 
 /* Responsive Design for Banner */
 @media (max-width: 1100px) {
-  .pc-featured-product-banner {
-    margin: 64px 24px;
-    padding: 48px;
-    min-height: auto;
-  }
+  
   
   .pc-featured-content {
     flex-direction: column;
@@ -682,18 +678,22 @@
   }
   
   .pc-featured-stats {
-    justify-content: center;
-    gap: 40px;
+   width: fit-content;
+    justify-content: space-between;
+    
     margin-top: 48px;
+  }
+
+  .pc-stat-item{
+    display: flex;
+    width: 220px;
+    
   }
 }
 
+
 @media (max-width: 768px) {
-  .pc-featured-product-banner {
-    margin: 10px 16px;
-    padding: 32px;
-    border-radius: 16px;
-  }
+  
   
   .pc-featured-text {
     padding: 24px;
@@ -773,13 +773,15 @@
 }
 
 @media (max-width: 480px) {
+
+
   .pc-featured-product-banner {
     margin: 10px 6px;
     padding: 8px;
   }
   
   .pc-featured-text {
-    padding: 10px;
+    padding: 14px;
   
   }
   
@@ -796,7 +798,7 @@
   .pc-featured-button-container {
     flex-direction: column;
     align-items: center;
-    gap: 15px;
+    gap: 20px;
     padding-top: 6px;
   }
   
@@ -812,19 +814,15 @@
     min-width: 160px;
   }
   
-  .pc-featured-stats {
-    margin-top: -15px;
-    gap: 16px;
-  }
-  
-  .pc-stat-number {
-    font-size: 28px;
-  }
-  
-  .pc-stat-label {
-    font-size: 14px;
-  }
-  
+ .pc-split-gap-content {
+
+display: none;
+
+}
+.pc-split-image-container:hover {
+  gap:0;
+
+}
   .pc-split-image-container {
     height: 180px;
   }
@@ -834,27 +832,11 @@
     height: 100%;
   }
   
-  .pc-logo-circle {
-    width: 60px;
-    height: 30px;
-    border-radius: 17px;
-  }
   
-  .pc-logo-text {
-    font-size:smaller ;
-  }
+ 
   
-  .pc-product-icon {
-    font-size: var(--text-lg);
-  }
   
-  .pc-gap-title {
-    font-size: var(--text-xs);
-  }
   
-  .pc-gap-subtitle {
-    font-size: 0.625rem;
-  }
   
   .pc-hero-image {
     min-height: 180px;

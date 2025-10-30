@@ -187,15 +187,12 @@ body {
   gap: 1rem;
   margin-bottom: 2.5rem;
   padding: 1.5rem;
-  
+  border: none;
   animation: fadeInUp 0.8s ease-out 0.2s both;
   transition: all 0.3s ease;
 }
 
-.pc-featuredcard-filters:hover {
-  box-shadow: var(--shadow-lg);
-  transform: translateY(-2px);
-}
+    
 
 .pc-featuredcard-filters-title {
   font-size: 1.25rem;
@@ -236,17 +233,16 @@ body {
 /* ===== SELECT BOX STYLING ===== */
 .pc-featuredcard-selectbox {
   padding: 0.75rem 1rem;
-  border: 2px solid var(--primary-light);
+  border: 0.2px solid var(--primary-light);
   border-radius: 10px;
   background: var(--bg-primary);
   font-size: 0.95rem;
-  font-weight: 500;
+  font-weight: 450;
   color: var(--text-dark);
   cursor: pointer;
   transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
   min-width: 160px;
   font-family: 'Poppins', sans-serif;
-  box-shadow: var(--shadow-sm);
   position: relative;
   overflow: hidden;
 }
@@ -272,7 +268,7 @@ body {
   transform: translateY(-2px) scale(1.02);
 }
 
-.pc-featuredcard-selectbox:focus {
+ .pc-featuredcard-selectbox:focus {
   outline: none;
   border-color: var(--primary-dark);
   box-shadow: 0 0 0 3px rgba(126, 87, 194, 0.1);
@@ -302,7 +298,7 @@ body {
 
 
 .pc-featuredcard-productcard {
-  background: var(--bg-primary);
+  background: lab(96.34% 0.67 0.22);
   border-radius: 18px;
   border: 2px solid var(--primary-light);
   box-shadow: var(--shadow-sm);
