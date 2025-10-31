@@ -10,8 +10,8 @@
     "@fortawesome/free-solid-svg-icons": "^6.7.2",
     "@fortawesome/react-fontawesome": "^0.2.2",
     "@reduxjs/toolkit": "^2.2.2",
-    "font-awesome": "^4.7.0",
-    "gsap": "^3.13.0",
+    
+    
     "motion": "^12.23.12",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -27,7 +27,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "purge:report": "purgecss --config purgecss.config.cjs --rejected > purge-report.txt",
+    "purge:css": "purgecss --config purgecss.config.cjs --output purged-css"
   },
   "eslintConfig": {
     "extends": [
