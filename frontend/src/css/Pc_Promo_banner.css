@@ -22,13 +22,12 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  min-height: 360px;
   position: relative;
   z-index: 2;
   gap: 5px;
   width: 100%;
   max-width: 1200px;
-  margin: 0 auto;
+ 
 }
 
 .pc-featured-text {
@@ -37,12 +36,12 @@
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
-  padding: 4px;
   color: #3D3357;
   z-index: 3;
   position: relative;
   min-width: 400px;
   max-width: 700px;
+ 
 }
 
 .pc-featured-badge {
@@ -184,62 +183,7 @@
   box-shadow: 0 12px 24px rgba(126, 87, 194, 0.3);
 }
 
-.pc-featured-stats {
-  display: flex;
-  gap: 48px;
-  margin-top: 64px;
-  flex-wrap: wrap;
-  justify-content: flex-start;
-  align-items: flex-start;
-}
 
-.pc-stat-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-  position: relative;
-  cursor: pointer;
-  min-width: 120px;
-  flex-shrink: 0;
-}
-
-.pc-stat-number {
-  font-family: var(--font-display);
-  font-size: var(--text-4xl);
-  font-weight: var(--font-weight-bold);
-  color: var(--primary);
-  line-height: var(--leading-tight);
-  margin-bottom: 10px;
-  white-space: nowrap;
-  letter-spacing: var(--tracking-tight);
-}
-
-.pc-stat-label {
-  font-family: var(--font-primary);
-  font-size: var(--text-base);
-  color: #6D6385;
-  font-weight: var(--font-weight-semibold);
-  text-transform: uppercase;
-  letter-spacing: var(--tracking-wide);
-  text-align: center;
-  line-height: var(--leading-snug);
-  max-width: 100px;
-  white-space: nowrap;
-  word-break: keep-all;
-}
-
-.pc-stat-item::after {
-  content: '';
-  position: absolute;
-  bottom: -16px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 20px;
-  height: 2px;
-  background: linear-gradient(to bottom, var(--primary), transparent);
-  border-radius: 1px;
-}
 
 .pc-featured-visual {
   flex: 0 0 40%;
@@ -613,11 +557,11 @@
     align-items: center;
     justify-content: center;
     min-height: auto;
-    gap: 48px;
+    
   }
   
   .pc-featured-text {
-    padding: 32px;
+    padding-top: 19px;
     text-align: center;
     align-items: center;
     min-width: 0;

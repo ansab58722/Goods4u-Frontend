@@ -292,7 +292,7 @@ const Productcards = ({ Data, category }) => {
                       src={Product.imageURL} 
                       alt={Product.name || 'Product'} 
                       onError={(e) => {
-                        e.target.src = '/Images/product_1.png'; // Fallback image
+                       "errotr loading image"
                       }}
                     />
                   </div>

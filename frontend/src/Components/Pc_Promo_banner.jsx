@@ -95,7 +95,7 @@ const Pc_Promo_banner = () => {
           </motion.div>
           
           <motion.div 
-            className="pc-featured-stats"
+            className="hero-stats"
             initial={{ y: 30, opacity: 0 }}
             animate={isInView ? { y: 0, opacity: 1 } : { y: 30, opacity: 0 }}
             transition={{ duration: 0.8, delay: 1.1 }}
@@ -107,7 +107,7 @@ const Pc_Promo_banner = () => {
             ].map((stat, index) => (
               <motion.div 
                 key={index}
-                className="pc-stat-item"
+                className="stat-item"
                 initial={{ scale: 0, y: 20 }}
                 animate={isInView ? { scale: 1, y: 0 } : { scale: 0, y: 20 }}
                 transition={{ 
@@ -118,8 +118,8 @@ const Pc_Promo_banner = () => {
                 }}
                 whileHover={{ scale: 1.1, y: -5 }}
               >
-                <span className="pc-stat-number">{stat.number}</span>
-                <span className="pc-stat-label">{stat.label}</span>
+                <span className="stat-number">{stat.number}</span>
+                <span className="stat-label">{stat.label}</span>
               </motion.div>
             ))}
           </motion.div>
