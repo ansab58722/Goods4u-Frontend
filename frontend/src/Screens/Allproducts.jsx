@@ -386,7 +386,7 @@ const Allproducts = () => {
                         <div className="pc-featuredcard-productbadge">{percent}% OFF</div>
                       )}
                       <div className="pc-featuredcard-productimage">
-                        <img src={Product.imageURL} alt={Product.name} />
+                        <img src={Product.imageURL} alt={Product.name} loading="lazy" decoding="async" />
                       </div>
                       <div className="pc-featuredcard-productcategory">
                         {Product.category}

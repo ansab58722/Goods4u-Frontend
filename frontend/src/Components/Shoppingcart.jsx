@@ -34,7 +34,7 @@ window.scrollTo({ top: 0, behavior: 'smooth' })
                                 <div className="cart-item" key={item.id}>
                                     <div className="item-main">
                                         <div className="item-image">
-                                            <img src={item.imageURL} alt={item.name} />
+                                            <img src={item.imageURL} alt={item.name} loading="lazy" decoding="async" />
                                         </div>
                                         <div className="item-details">
                                             <div className="item-category">{item.maincategory}</div>

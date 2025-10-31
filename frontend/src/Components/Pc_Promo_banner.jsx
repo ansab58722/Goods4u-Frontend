@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, memo } from 'react';
 import { motion, useInView } from 'motion/react';
 import { useNavigate } from "react-router-dom";
 import "../css/Pc_Promo_banner.css";
@@ -142,6 +142,8 @@ const Pc_Promo_banner = () => {
                 src={bannerImage}
                 alt="Hero Banner Left"
                 className="pc-hero-image-part"
+                loading="lazy"
+                decoding="async"
               />
             </motion.div>
             
@@ -200,4 +202,4 @@ const Pc_Promo_banner = () => {
   );
 };
 
-export default Pc_Promo_banner; 
+export default memo(Pc_Promo_banner); 

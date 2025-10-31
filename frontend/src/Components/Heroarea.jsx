@@ -1,5 +1,5 @@
 
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useRef, useState, useEffect, memo } from 'react';
 import { motion, useInView } from 'motion/react';
 import { useNavigate } from 'react-router-dom';
 // Import Swiper React components
@@ -192,4 +192,4 @@ const Heroarea = () => {
   )
 }
 
-export default Heroarea
+export default memo(Heroarea)

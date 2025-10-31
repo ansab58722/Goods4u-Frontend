@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, memo } from "react";
 import { motion, useInView } from "motion/react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
@@ -291,6 +291,8 @@ const Productcards = ({ Data, category }) => {
                     <img 
                       src={Product.imageURL} 
                       alt={Product.name || 'Product'} 
+                      loading="lazy"
+                      decoding="async"
                       onError={(e) => {
                        "errotr loading image"
                       }}
@@ -380,4 +382,4 @@ const Productcards = ({ Data, category }) => {
   );
 };
 
-export default Productcards;
+export default memo(Productcards);

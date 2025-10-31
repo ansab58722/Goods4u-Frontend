@@ -34,6 +34,7 @@ function VedioHero() {
                         autoPlay 
                         loop 
                         playsInline
+                        preload="metadata"
                         initial={{ scale: 1.1, opacity: 0 }}
                         animate={isInView ? { scale: 1, opacity: 1 } : { scale: 1.1, opacity: 0 }}
                         transition={{ duration: 1.2, delay: 0.4 }}

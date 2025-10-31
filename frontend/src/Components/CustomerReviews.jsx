@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, memo } from 'react';
 import { motion, useInView } from 'motion/react';
 import './../css/CustomerReviews.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -83,7 +83,7 @@ const CustomerReviews = () => {
                                 whileHover={{ scale: 1.05, y: -5 }}
                             >
                                 <div className="review-header">
-                                    <img src={review.avatar} alt={review.name} className="review-avatar" />
+                                    <img src={review.avatar} alt={review.name} className="review-avatar" loading="lazy" decoding="async" />
                                     <div className="review-info">
                                         <h4>{review.name}</h4>
                                         <StarRating rating={review.rating} />
@@ -99,4 +99,4 @@ const CustomerReviews = () => {
     );
 };
 
-export default CustomerReviews;
+export default memo(CustomerReviews);

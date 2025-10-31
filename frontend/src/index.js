@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App.js';
@@ -11,13 +11,41 @@ import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
-import Shoppingcart from './Components/Shoppingcart.jsx';
-import Producdetail from './Components/Productdetail.jsx';
-import Allproducts from './Screens/Allproducts.jsx';
-import LoginSignup from './Screens/Login-Signup.jsx';
-import AboutUs from './Components/AboutUs.jsx';
-import ContactUs from './Components/ContactUs.jsx';
-import Orders from './Components/Orders.jsx';
+
+// Code splitting - lazy load routes for better performance
+const Shoppingcart = lazy(() => import('./Components/Shoppingcart.jsx'));
+const Producdetail = lazy(() => import('./Components/Productdetail.jsx'));
+const Allproducts = lazy(() => import('./Screens/Allproducts.jsx'));
+const LoginSignup = lazy(() => import('./Screens/Login-Signup.jsx'));
+const AboutUs = lazy(() => import('./Components/AboutUs.jsx'));
+const ContactUs = lazy(() => import('./Components/ContactUs.jsx'));
+const Orders = lazy(() => import('./Components/Orders.jsx'));
+
+// Loading component for Suspense fallback
+const LoadingFallback = () => (
+  <div style={{ 
+    display: 'flex', 
+    justifyContent: 'center', 
+    alignItems: 'center', 
+    height: '100vh',
+    background: 'linear-gradient(135deg, #F8F7FF 0%, #E8E2F4 100%)'
+  }}>
+    <div style={{
+      width: '50px',
+      height: '50px',
+      border: '4px solid #E8E2F4',
+      borderTop: '4px solid #7E57C2',
+      borderRadius: '50%',
+      animation: 'spin 1s linear infinite'
+    }}></div>
+    <style>{`
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+    `}</style>
+  </div>
+);
 
 const router = createBrowserRouter([
   {
@@ -26,30 +54,58 @@ const router = createBrowserRouter([
   },
   {
     path: "product",
-    element: <Producdetail/>,
+    element: (
+      <Suspense fallback={<LoadingFallback />}>
+        <Producdetail/>
+      </Suspense>
+    ),
   },
   {
     path: "shoppingcart",
-    element: <Shoppingcart/>
+    element: (
+      <Suspense fallback={<LoadingFallback />}>
+        <Shoppingcart/>
+      </Suspense>
+    )
   }, {
     path: "allproducts",
-    element: <Allproducts/>
+    element: (
+      <Suspense fallback={<LoadingFallback />}>
+        <Allproducts/>
+      </Suspense>
+    )
   },
   {
     path: "LoginSignup",
-    element: <LoginSignup/>
+    element: (
+      <Suspense fallback={<LoadingFallback />}>
+        <LoginSignup/>
+      </Suspense>
+    )
   },
   {
     path: "about",
-    element: <AboutUs/>
+    element: (
+      <Suspense fallback={<LoadingFallback />}>
+        <AboutUs/>
+      </Suspense>
+    )
   },
   {
     path: "contact",
-    element: <ContactUs/>
+    element: (
+      <Suspense fallback={<LoadingFallback />}>
+        <ContactUs/>
+      </Suspense>
+    )
   },
   {
     path: "orders",
-    element: <Orders/>
+    element: (
+      <Suspense fallback={<LoadingFallback />}>
+        <Orders/>
+      </Suspense>
+    )
   },
 
 

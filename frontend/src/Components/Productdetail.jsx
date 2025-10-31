@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, memo } from 'react'
 import "../css/Productdetail.css"
 import { useDispatch, useSelector } from "react-redux";
 import { addTocart } from "../features/CartSlice";
@@ -150,6 +150,8 @@ if (!fetched_product || fetched_product.length === 0) return window.history.back
               className={`Product-details-productmainimage ${isImageZoomed ? 'zoomed' : ''}`}
               src={mainimg}
               alt="Product"
+              loading="lazy"
+              decoding="async"
               onMouseEnter={() => setIsImageZoomed(true)}
               onMouseLeave={() => setIsImageZoomed(false)}
             />
@@ -179,6 +181,8 @@ if (!fetched_product || fetched_product.length === 0) return window.history.back
                     src={varientimg}
                     alt="1stimage"
                     key={index+"ti"}
+                    loading="lazy"
+                    decoding="async"
                     className={`productimgs ${mainimg === varientimg ? 'aactive' : ''}`}
                     onClick={() => {
 
@@ -428,4 +432,4 @@ if (!fetched_product || fetched_product.length === 0) return window.history.back
 
 }
 
-export default Productdetail
+export default memo(Productdetail)

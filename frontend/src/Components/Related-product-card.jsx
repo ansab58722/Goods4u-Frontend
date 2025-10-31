@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { useDispatch, useSelector } from "react-redux";
 import { Swiper, SwiperSlide } from 'swiper/react';
 import "../css/Related-product-card.css"
@@ -93,7 +94,7 @@ const StarRating = ({ rating }) => {
                                 setproduct(product)
                                 navigate("/product");
                             }}>
-                                <img src={product.imageURL} alt={product.name} style={{ objectPosition: "center" }} />
+                                <img src={product.imageURL} alt={product.name} style={{ objectPosition: "center" }} loading="lazy" decoding="async" />
                                 <div className="Related-product-product-info">
                                     <h4 title={product.name}>{product.name}</h4>
                                     <div className="Related-product-product-meta">
@@ -124,4 +125,4 @@ const StarRating = ({ rating }) => {
 
 }
 
-export default Related_product_card;
+export default memo(Related_product_card);
