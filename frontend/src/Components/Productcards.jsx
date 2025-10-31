@@ -133,6 +133,15 @@ const Productcards = ({ Data, category }) => {
     return [];
   };
 
+  // Resolve target for "View All"
+  const getViewAllHref = () => {
+    if (category === "cloths") return "/allproducts?category=cloths";
+    if (category === "shoes") return "/allproducts?category=footwears";
+    if (category === "watches") return "/allproducts?category=watches";
+    if (category === "electronics") return "/allproducts?category=electronics";
+    return "/allproducts";
+  };
+
   return (
     <motion.div 
       ref={sectionRef}
@@ -219,9 +228,9 @@ const Productcards = ({ Data, category }) => {
 
       <motion.div
         ref={swiperRef}
-        initial={{ opacity: 0, y: 30 }}
-        animate={isSwiperInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-        transition={{ duration: 0.6, delay: 0.2 }}
+        initial={{ opacity: 0 }}
+        animate={isSwiperInView ? { opacity: 1 } : { opacity: 0 }}
+        transition={{ duration: 0.3 }}
       >
         <Swiper
         initialSlide={0}
@@ -270,19 +279,9 @@ const Productcards = ({ Data, category }) => {
                       handleProductClick(Product);
                     }
                   }}
-                  initial={{ scale: 0.9, opacity: 0, y: 20 }}
-                  animate={isSwiperInView ? { scale: 1, opacity: 1, y: 0 } : { scale: 0.9, opacity: 0, y: 20 }}
-                  transition={{ 
-                    duration: 0.5, 
-                    delay: 0.1 + (allitems.indexOf(Product) * 0.1),
-                    ease: "easeOut"
-                  }}
-                  whileHover={{ 
-                    scale: 1.05, 
-                    y: -8,
-                    transition: { duration: 0.2 }
-                  }}
-                  whileTap={{ scale: 0.95 }}
+                  initial={{ opacity: 0 }}
+                  animate={isSwiperInView ? { opacity: 1 } : { opacity: 0 }}
+                  transition={{ duration: 0.2 }}
                 >
                   {hasDiscount && (
                     <div className="pc-featuredcard-productbadge">{percent}% OFF</div>
@@ -369,6 +368,15 @@ const Productcards = ({ Data, category }) => {
           scale: 1.05, 
           y: -2,
           transition: { duration: 0.2 }
+        }}
+        role="button"
+        tabIndex={0}
+        onClick={() => navigate(getViewAllHref())}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            navigate(getViewAllHref());
+          }
         }}
       >
         View All

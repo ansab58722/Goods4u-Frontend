@@ -1,6 +1,5 @@
 
-import React, { useRef, useState, useEffect, memo } from 'react';
-import { motion, useInView } from 'motion/react';
+import React, { memo } from 'react';
 import { useNavigate } from 'react-router-dom';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -17,43 +16,16 @@ import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 
 const Heroarea = () => {
   const navigate = useNavigate();
-  const heroRef = useRef(null);
-  const isInView = useInView(heroRef, { once: true, margin: "-100px 0px" });
-  const [isLoaded, setIsLoaded] = useState(false);
 
-  useEffect(() => {
-    // Simulate loading time to ensure smooth transition
-    const timer = setTimeout(() => {
-      setIsLoaded(true);
-    }, 100);
-    return () => clearTimeout(timer);
-  }, []);
-
+  // Lightweight: no per-element motion. Keep a single, quick fade-in via CSS.
   return (
-    <motion.div
-      ref={heroRef}
-      initial={{ opacity: 0, y: 50 }}
-      animate={isInView && isLoaded ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-      transition={{ duration: 1, ease: "easeOut" }}
-      style={{ minHeight: '500px' }}
-    >
-      <motion.div
-        initial={{ scale: 0.95, opacity: 0 }}
-        animate={isInView && isLoaded ? { scale: 1, opacity: 1 } : { scale: 0.95, opacity: 0 }}
-        transition={{ duration: 1.2, delay: 0.3 }}
-      >
+    <div style={{ minHeight: '500px', opacity: 1, transition: 'opacity 250ms ease-out' }}>
         <Swiper
           loop={true}
-          pagination={{
-            clickable: true,
-          }}
-
-          speed={1900}
+          pagination={{ clickable: true }}
+          speed={600}
           navigation={true}
-          autoplay={{
-            delay: 5000,
-            disableOnInteraction: true,
-          }}
+          autoplay={{ delay: 6000, disableOnInteraction: true }}
           modules={[Pagination, Navigation, Autoplay]}
           className="Ha_mySwiper"
           style={{ height: '500px' }}
@@ -61,21 +33,13 @@ const Heroarea = () => {
           {/* Men's Clothing Banner */}
           <SwiperSlide className='Ho_Swiperslide slide-1-container'>
             <div className="banner-container">
-              <motion.div
+              <div
                 className="responsive-bg-image slide-1"
-                initial={{ scale: 1.1, opacity: 0 }}
-                animate={isInView && isLoaded ? { scale: 1, opacity: 1 } : { scale: 1.1, opacity: 0 }}
-                transition={{ duration: 1.5, delay: 0.5 }}
                 role="img"
                 aria-label="Men's Fashion Collection"
               />
               <div className="banner-content banner-content-left">
-                <motion.div
-                  initial={{ opacity: 0, x: -50 }}
-                  animate={isInView && isLoaded ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
-                  transition={{ duration: 1, delay: 0.8 }}
-                  className="banner-text"
-                >
+                <div className="banner-text">
                   <h1 className="banner-title">STYLE THAT SPEAKS</h1>
                   <h2 className="banner-subtitle">Men's Premium Collection</h2>
                   <p className="banner-description">
@@ -96,7 +60,7 @@ const Heroarea = () => {
                       View Collection
                     </button>
                   </div>
-                </motion.div>
+                </div>
               </div>
             </div>
           </SwiperSlide>
@@ -104,21 +68,13 @@ const Heroarea = () => {
           {/* Women's Clothing Banner */}
           <SwiperSlide className='Ho_Swiperslide'>
             <div className="banner-container">
-              <motion.div
+              <div
                 className="responsive-bg-image slide-2"
-                initial={{ scale: 1.1, opacity: 0 }}
-                animate={isInView && isLoaded ? { scale: 1, opacity: 1 } : { scale: 1.1, opacity: 0 }}
-                transition={{ duration: 1.5, delay: 0.6 }}
                 role="img"
                 aria-label="Women's Fashion Collection"
               />
               <div className="banner-content banner-content-left">
-                <motion.div
-                  initial={{ opacity: 0, x: -50 }}
-                  animate={isInView && isLoaded ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
-                  transition={{ duration: 1, delay: 0.8 }}
-                  className="banner-text"
-                >
+                <div className="banner-text">
                   <h1 className="banner-title">ELEGANCE REDEFINED</h1>
                   <h2 className="banner-subtitle">Women's Fashion Hub</h2>
                   <p className="banner-description">
@@ -139,7 +95,7 @@ const Heroarea = () => {
                       New Arrivals
                     </button>
                   </div>
-                </motion.div>
+                </div>
               </div>
             </div>
           </SwiperSlide>
@@ -147,21 +103,13 @@ const Heroarea = () => {
           {/* Footwear Banner */}
           <SwiperSlide className='Ho_Swiperslide'>
             <div className="banner-container">
-              <motion.div
+              <div
                 className="responsive-bg-image slide-3"
-                initial={{ scale: 1.1, opacity: 0 }}
-                animate={isInView && isLoaded ? { scale: 1, opacity: 1 } : { scale: 1.1, opacity: 0 }}
-                transition={{ duration: 1.5, delay: 0.7 }}
                 role="img"
                 aria-label="Premium Footwear Collection"
               />
               <div className="banner-content banner-content-left">
-                <motion.div
-                  initial={{ opacity: 0, x: -50 }}
-                  animate={isInView && isLoaded ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
-                  transition={{ duration: 1, delay: 0.8 }}
-                  className="banner-text"
-                >
+                <div className="banner-text">
                   <h1 className="banner-title">STEP IN STYLE</h1>
                   <h2 className="banner-subtitle">Premium Footwear</h2>
                   <p className="banner-description">
@@ -182,13 +130,12 @@ const Heroarea = () => {
                       Best Sellers
                     </button>
                   </div>
-                </motion.div>
+                </div>
               </div>
             </div>
           </SwiperSlide>
         </Swiper>
-      </motion.div>
-    </motion.div>
+    </div>
   )
 }
 
