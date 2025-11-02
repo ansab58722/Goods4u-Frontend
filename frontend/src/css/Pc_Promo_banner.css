@@ -3,13 +3,8 @@
 /* Import Modern Typography */
 .pc-featured-product-banner {
   background:rgb(239,239,239);
-  
-
-
   overflow: hidden;
- 
   position: relative;
-
   min-height: 400px;
   max-width: 1400px;
   width: 100%;

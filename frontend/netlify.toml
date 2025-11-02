@@ -1,0 +1,58 @@
+[build]
+  publish = "build"
+  command = "npm run build"
+
+[[headers]]
+  # Cache static assets with content hashes for 1 year
+  for = "/static/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  # Cache images for 1 year
+  for = "/Images/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  # Cache all hashed assets (JS, CSS, fonts, images) for 1 year
+  for = "/*.{js,css,woff,woff2,ttf,otf,eot,svg,jpg,jpeg,png,gif,webp,ico}"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+[[headers]]
+  # Favicon - cache for 1 week
+  for = "/favicon.ico"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+[[headers]]
+  # Manifest - cache for 1 week
+  for = "/manifest.json"
+  [headers.values]
+    Cache-Control = "public, max-age=604800"
+
+[[headers]]
+  # HTML files - no cache (always revalidate)
+  for = "/*.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  # Index.html specifically - no cache
+  for = "/index.html"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  # Service worker - no cache
+  for = "/service-worker.js"
+  [headers.values]
+    Cache-Control = "public, max-age=0, must-revalidate"
+
+[[headers]]
+  # Robots.txt - cache for 1 day
+  for = "/robots.txt"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
+

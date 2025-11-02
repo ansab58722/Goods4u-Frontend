@@ -1,0 +1,40 @@
+# Netlify Headers Configuration for Efficient Caching
+
+# Cache static assets with content hashes (JS, CSS) for 1 year
+/static/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Cache images in static folder for 1 year
+/static/media/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Cache fonts for 1 year
+/static/media/*.woff
+  Cache-Control: public, max-age=31536000, immutable
+/static/media/*.woff2
+  Cache-Control: public, max-age=31536000, immutable
+
+# Cache images from Images folder for 1 year
+/Images/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Cache favicon and manifest for 1 week
+/favicon.ico
+  Cache-Control: public, max-age=604800
+/manifest.json
+  Cache-Control: public, max-age=604800
+
+# HTML files - no cache or short cache (always fresh content)
+/*.html
+  Cache-Control: public, max-age=0, must-revalidate
+/index.html
+  Cache-Control: public, max-age=0, must-revalidate
+
+# Service worker - no cache
+/service-worker.js
+  Cache-Control: public, max-age=0, must-revalidate
+
+# robots.txt - cache for 1 day
+/robots.txt
+  Cache-Control: public, max-age=86400
+
