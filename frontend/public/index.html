@@ -13,72 +13,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     
-    <!-- Load Google Fonts asynchronously to avoid blocking render -->
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" />
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" />
-    
-    <!-- Non-blocking font loading -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
-    <noscript>
-      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
-      <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-    </noscript>
-    
-    <!-- Intercept and make CSS loading non-blocking -->
-    <script>
-      // Intercept stylesheet links to make them non-blocking
-      (function() {
-        var observer = new MutationObserver(function(mutations) {
-          mutations.forEach(function(mutation) {
-            mutation.addedNodes.forEach(function(node) {
-              if (node.nodeName === 'LINK' && node.rel === 'stylesheet') {
-                // Make CSS non-blocking
-                node.media = 'print';
-                node.onload = function() {
-                  this.media = 'all';
-                };
-                // Fallback for browsers that don't support onload
-                if (!node.onload) {
-                  var img = document.createElement('img');
-                  img.onerror = function() {
-                    node.media = 'all';
-                  };
-                }
-              }
-            });
-          });
-        });
-        
-        // Start observing when DOM is ready
-        if (document.head) {
-          observer.observe(document.head, {
-            childList: true,
-            subtree: false
-          });
-        } else {
-          document.addEventListener('DOMContentLoaded', function() {
-            observer.observe(document.head, {
-              childList: true,
-              subtree: false
-            });
-          });
-        }
-        
-        // Also handle existing stylesheets
-        document.addEventListener('DOMContentLoaded', function() {
-          var links = document.querySelectorAll('link[rel="stylesheet"]');
-          links.forEach(function(link) {
-            if (!link.media || link.media === 'all') {
-              link.media = 'print';
-              link.onload = function() {
-                this.media = 'all';
-              };
-            }
-          });
-        });
-      })();
-    </script>
+    <!-- Load fonts with font-display: swap to prevent layout shift -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>

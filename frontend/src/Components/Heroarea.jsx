@@ -13,8 +13,9 @@ import 'swiper/css/pagination';
 // import required modules
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 
-// Import first slide image for LCP optimization
-import slide1Image from '../Images/desktop-slider1.webp';
+// Import first slide images for LCP optimization (desktop and mobile)
+import slide1ImageDesktop from '../Images/desktop-slider1.webp';
+import slide1ImageMobile from '../Images/desktop-slider1 - mobile.jpg';
 
 const Heroarea = () => {
   const navigate = useNavigate();
@@ -35,21 +36,27 @@ const Heroarea = () => {
           {/* Men's Clothing Banner */}
           <SwiperSlide className='Ho_Swiperslide slide-1-container'>
             <div className="banner-container">
-              <img
-                src={slide1Image}
-                alt="Men's Fashion Collection"
-                className="responsive-bg-image slide-1"
-                fetchpriority="high"
-                decoding="async"
-                style={{
-                  position: 'absolute',
-                  top: 0,
-                  left: 0,
-                  width: '100%',
-                  height: '100%',
-                  objectFit: 'cover'
-                }}
-              />
+              <picture>
+                <source 
+                  media="(max-width: 768px)" 
+                  srcSet={slide1ImageMobile}
+                />
+                <img
+                  src={slide1ImageDesktop}
+                  alt="Men's Fashion Collection"
+                  className="responsive-bg-image slide-1"
+                  fetchpriority="high"
+                  decoding="async"
+                  style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover'
+                  }}
+                />
+              </picture>
               <div className="banner-content banner-content-left">
                 <div className="banner-text">
                   <h1 className="banner-title">STYLE THAT SPEAKS</h1>
