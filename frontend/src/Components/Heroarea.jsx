@@ -11,8 +11,10 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
 // import required modules
-
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+
+// Import first slide image for LCP optimization
+import slide1Image from '../Images/desktop-slider1.webp';
 
 const Heroarea = () => {
   const navigate = useNavigate();
@@ -33,10 +35,20 @@ const Heroarea = () => {
           {/* Men's Clothing Banner */}
           <SwiperSlide className='Ho_Swiperslide slide-1-container'>
             <div className="banner-container">
-              <div
+              <img
+                src={slide1Image}
+                alt="Men's Fashion Collection"
                 className="responsive-bg-image slide-1"
-                role="img"
-                aria-label="Men's Fashion Collection"
+                fetchpriority="high"
+                decoding="async"
+                style={{
+                  position: 'absolute',
+                  top: 0,
+                  left: 0,
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover'
+                }}
               />
               <div className="banner-content banner-content-left">
                 <div className="banner-text">
