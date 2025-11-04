@@ -1,10 +1,10 @@
-import { useState, useEffect, useRef, memo } from "react";
+import { useState, useEffect, useRef, useMemo, memo } from "react";
 import { motion, useInView } from "motion/react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "../css/Productcard.css";
-import { Pagination, Navigation } from "swiper/modules";
+import { Pagination, Navigation, Virtual } from "swiper/modules";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { productselectedfeature, RelatedProductsFeature } from "../features/CartSlice";
@@ -26,8 +26,6 @@ const Productcards = ({ Data, category }) => {
   
   // State management
   const [fetched_items, set_fetched_items] = useState([]);
-  const [allitems, setallitems] = useState([]);
-  const [filtereditems, setfiltereditems] = useState([]);
   const [selectedgender, setselectedgender] = useState("");
   const [selectedcategory, setselectedcategory] = useState("");
   
@@ -49,42 +47,30 @@ const Productcards = ({ Data, category }) => {
   useEffect(() => {
     if (Data && Data.length > 0) {
       set_fetched_items(Data);
-      setallitems(Data);
     }
   }, [Data]);
+
+  // Derive items to render via memoized filters
+  const itemsToRender = useMemo(() => {
+    let base = fetched_items;
+    if (selectedgender) {
+      base = base.filter((item) => item.gender?.toLowerCase() === selectedgender.toLowerCase());
+    }
+    if (selectedcategory) {
+      base = base.filter((item) => item.category?.toLowerCase() === selectedcategory.toLowerCase());
+    }
+    return base;
+  }, [fetched_items, selectedgender, selectedcategory]);
 
   // Filter by gender
   const filteritems = (genderFilter) => {
     setselectedgender(genderFilter);
     setselectedcategory("");
-
-    if (genderFilter !== "") {
-      const updateitems = fetched_items.filter((item) => {
-        return item.gender.toLowerCase() === genderFilter.toLowerCase();
-      });
-      setallitems(updateitems);
-      setfiltereditems(updateitems);
-    } else {
-      setallitems(fetched_items);
-      setfiltereditems([]);
-    }
   };
 
   // Filter by category
   const filtercategory = (value) => {
     setselectedcategory(value);
-    
-    if (filtereditems.length === 0) {
-      const updateitems = fetched_items.filter((item) => {
-        return item.category.toLowerCase() === value.toLowerCase();
-      });
-      setallitems(updateitems);
-    } else {
-      const updateitems = filtereditems.filter((item) => {
-        return item.category.toLowerCase() === value.toLowerCase();
-      });
-      setallitems(updateitems);
-    }
   };
 
   // Handle product click
@@ -216,8 +202,6 @@ const Productcards = ({ Data, category }) => {
               onClick={() => {
                 setselectedgender("");
                 setselectedcategory("");
-                setallitems(fetched_items);
-                setfiltereditems([]);
               }}
             >
               Clear Filters
@@ -235,6 +219,7 @@ const Productcards = ({ Data, category }) => {
         <Swiper
         initialSlide={0}
         navigation
+        virtual
         breakpoints={{
           500: {
             slidesPerView: 1,
@@ -253,11 +238,11 @@ const Productcards = ({ Data, category }) => {
             spaceBetween: 30,
           },
         }}
-        modules={[Pagination, Navigation]}
+        modules={[Pagination, Navigation, Virtual]}
         className="pc-swiper"
       >
-        {allitems.length > 0 ? (
-          allitems.map((Product) => {
+        {itemsToRender.length > 0 ? (
+          itemsToRender.map((Product, idx) => {
             const percent = Math.round(
               ((Product.old_price - Product.new_price) / Product.old_price) * 100
             );
@@ -265,7 +250,7 @@ const Productcards = ({ Data, category }) => {
             const saveAmount = (Product.old_price - Product.new_price).toFixed(2);
             
             return (
-              <SwiperSlide key={Product.id || Product._id}>
+              <SwiperSlide key={Product.id || Product._id} virtualIndex={idx}>
                 <motion.div
                   className="pc-featuredcard-productcard"
                   data-category={category}
@@ -293,7 +278,7 @@ const Productcards = ({ Data, category }) => {
                       loading="lazy"
                       decoding="async"
                       onError={(e) => {
-                       "errotr loading image"
+                        e.currentTarget.src = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==';
                       }}
                     />
                   </div>
@@ -382,10 +367,6 @@ const Productcards = ({ Data, category }) => {
         View All
       </motion.h1>
       
-      <link
-        href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css"
-        rel="stylesheet"
-      />
     </motion.div>
   );
 };

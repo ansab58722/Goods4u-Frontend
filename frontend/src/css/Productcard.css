@@ -394,16 +394,26 @@ body {
   overflow: hidden;
   border-radius: 12px;
   margin-bottom: 1rem;
+  aspect-ratio: 4 / 5;
+  width: 100%;
 }
 
 .pc-featuredcard-productimage img {
-  max-width: fit-content;
-  object-fit: contain;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
   display: block;
   margin: 0 auto;
   background: none;
   transition: all 0.3s ease;
   border-radius: 8px;
+}
+
+/* Desktop tweaks: reduce image height so card fits comfortably */
+@media (min-width: 1200px) {
+  .pc-featuredcard-productimage {
+    aspect-ratio: 1 / 1; /* square on large screens to avoid overly tall cards */
+  }
 }
 
 .pc-featuredcard-productimage::after {
@@ -642,16 +652,15 @@ body {
     line-height: 1.2;
   }
   .pc-featuredcard-productimage{
-    height: 20vh;
-    width: 30vw;
-  
+    aspect-ratio: 4 / 5;
+    width: 100%;
   }
-.pc-featuredcard-productimage img{
-  height: 20vh;
-  object-fit: cover;
-  object-position: center;
-  
-}
+  .pc-featuredcard-productimage img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
 }
 
 
@@ -687,8 +696,8 @@ body {
   }
 
   .pc-featuredcard-productimage{
-  
-    width: 60vw;
+    aspect-ratio: 4 / 5;
+    width: 100%;
   }
 }
 
