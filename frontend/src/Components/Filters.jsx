@@ -134,14 +134,15 @@ switch (productCategory) {
           <span className="filter-count">{getCategoryOptions().length}</span>
         </div>
         <div className="filter-options">
-        {getCategoryOptions().map((option) => (
+        {getCategoryOptions().map((option,index) => (
 
-<label className="filter-option">
+<label key={index+"fil"}  className="filter-option">
 <input
   className="filter-checkbox"
   name="checkbox"
   type="checkbox"
   value={option.value}
+  key={index+"filinput"}
   onClick={(e) => {
     if (e.target.checked === true) {
       filtercategory(e.target.value);

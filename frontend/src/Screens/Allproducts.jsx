@@ -361,7 +361,7 @@ const Allproducts = () => {
           ) : (
             <>
               <div className="allproducts-productsarea">
-                {allitems?.slice(0, visibleProducts).map((Product) => {
+                {allitems?.slice(0, visibleProducts).map((Product,index) => {
                   const percent = Math.round(
                     ((Product.old_price - Product.new_price) /
                       Product.old_price) *
@@ -375,6 +375,7 @@ const Allproducts = () => {
 
                     <div
                       className="pc-featuredcard-productcard"
+                      key={index+"prodcard"}
                       onClick={() => {
                         dispatch(productselectedfeature(Product));
                         dispatch(RelatedProductsFeature(allitems));
