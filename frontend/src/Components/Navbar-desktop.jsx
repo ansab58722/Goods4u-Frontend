@@ -11,7 +11,12 @@ import {
   faEnvelope,
   faSearch,
   faBars,
-  faTimes
+  faTimes,
+  faShirt,
+  faStopwatch,
+  faShower,
+  faShoePrints,
+  faTv
 } from '@fortawesome/free-solid-svg-icons';
 
 import { Link, useNavigate } from 'react-router-dom';
@@ -140,10 +145,10 @@ const Navbardesktop = () => {
   };
 
   const categories = [
-    { name: 'Clothing', path: '/allproducts?category=cloths', icon: faShoppingBag },
-    { name: 'Watches', path: '/allproducts?category=watches', icon: faShoppingBag },
-    { name: 'Footwear', path: '/allproducts?category=footwears', icon: faShoppingBag },
-    { name: 'Electronics', path: '/allproducts?category=electronics', icon: faShoppingBag }
+    { name: 'Clothing', path: '/allproducts?category=cloths', icon:  faShirt},
+    { name: 'Watches', path: '/allproducts?category=watches', icon: faStopwatch },
+    { name: 'Footwear', path: '/allproducts?category=footwears', icon: faShoePrints },
+    { name: 'Electronics', path: '/allproducts?category=electronics', icon: faTv }
   ];
 
   return (

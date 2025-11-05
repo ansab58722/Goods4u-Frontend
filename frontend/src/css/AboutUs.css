@@ -261,7 +261,7 @@
 
 .aboutUs-stat-item { /* Changed from .stat-item */
     text-align: center;
-    padding: 2rem 1rem;
+    padding: 0.1rem ;
 }
 
 .aboutUs-stat-item h3 { /* Changed from .stat-item h3 */
@@ -321,9 +321,7 @@
         font-size: 2.5rem;
     }
     
-    .aboutUs-hero-content p { /* Changed from .hero-content p */
-        font-size: 1rem;
-    }
+    
     
     .aboutUs-our-story, /* Changed from .our-story */
     .aboutUs-our-values, /* Changed from .our-values */
