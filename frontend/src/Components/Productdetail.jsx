@@ -1,70 +1,82 @@
-import React, { useState, useEffect, memo } from 'react'
-import "../css/Productdetail.css"
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState, useEffect, memo } from 'react';
+import "../css/Productdetail.css";
 import { addTocart } from "../features/CartSlice";
 import Navbardesktop from './Navbar-desktop';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTruck, faUndo, faShieldAlt, faCheck, faStar, faHeart, faShare, faShoppingCart, faEye } from '@fortawesome/free-solid-svg-icons';
-import { faHeart as farHeart } from '@fortawesome/free-regular-svg-icons';
+import { faHeart as farHeart, faStar as farStar } from '@fortawesome/free-regular-svg-icons'; 
 import Related_product_card from './Related-product-card.jsx';
 import Footer from './Footer.jsx';
-import { useNavigate,Navigate, useLocation} from 'react-router-dom';
-
-
+import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import Productsfetch from '../features/Productsfetch.js';
 
 const Productdetail = () => {
+  // --- LOGIC FIX 1: Better URL handling ---
+  const [searchParams] = useSearchParams();
+  const productID = searchParams.get('id');
 
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-       ;
-  const dispatch = useDispatch()
-    const navigate = useNavigate();
+  // --- State Definitions ---
+  const [size, setsize] = useState(0);
+  const [color, setcolor] = useState("");
+  const [isAddedToCart, setIsAddedToCart] = useState(false);
+  const [isWishlisted, setIsWishlisted] = useState(false);
+  const [quantity, setQuantity] = useState(1);
+  const [activeTab, setActiveTab] = useState('description');
+  const [isImageZoomed, setIsImageZoomed] = useState(false);
 
-    const fetched_product =useSelector((state) => state?.cart?.selectedproduct);
+  // --- LOGIC FIX 2: Loading State & Null Checks ---
+  const [data, setData] = useState([]);
+  const [product, setProduct] = useState(null); 
+  const [loading, setLoading] = useState(true); 
+  const [mainimg, setmainimg] = useState("");
+  const [Allproductimagesofvarient, setAllproductimagesofvarient] = useState([]);
 
-
-
-  const [size, setsize] = useState(0)
-  const [color, setcolor] = useState("")
-  const [isAddedToCart, setIsAddedToCart] = useState(false)
-  const [isWishlisted, setIsWishlisted] = useState(false)
-  const [quantity, setQuantity] = useState(1)
-  const [activeTab, setActiveTab] = useState('description')
-  const [isImageZoomed, setIsImageZoomed] = useState(false)
-  
-const[product,setproduct]=useState(fetched_product !== undefined ?fetched_product:alert("adas"))
-  const [mainimg, setmainimg] = useState( product.imageURL!== undefined ?product.imageURL:"" )
-  const [Allproductimagesofvarient, setAllproductimagesofvarient] = useState(
-  product?.colors?.[0]?.images ?? []
-);
-  //console.log( useSelector((state) => state.cart.Relatedproducts))
-
- 
-  useEffect(() => {
-  
-
-
-  setmainimg(product?.imageURL)
-setAllproductimagesofvarient(product?.colors?.[0]?.images)
-
-  window.scrollTo({
-      top: 5,
-    });
-
-
-    }, [product]);
-
-      
-
+  // --- Sample Reviews Data (Restored) ---
   const reviews = [
     { id: 1, name: 'Sarah M.', rating: 5, comment: 'Absolutely love these! Perfect fit and so comfortable.', date: '2 days ago' },
     { id: 2, name: 'Mike R.', rating: 4, comment: 'Great quality, fast shipping. Would recommend!', date: '1 week ago' },
     { id: 3, name: 'Emma L.', rating: 5, comment: 'Exceeded my expectations. The material is premium.', date: '2 weeks ago' }
-  ]
+  ];
 
+  // --- Effect 1: Fetch Data ---
+  useEffect(() => {
+    const fetchData = async () => {
+      setLoading(true);
+      await Productsfetch({ setData }, "productsdata");
+      setLoading(false);
+    };
+    fetchData();
+  }, []);
 
+  // --- Effect 2: Find Product in Data ---
+  useEffect(() => {
+    if (data.length > 0 && productID) {
+      const foundProduct = data.find(item => String(item.id) === String(productID));
+      setProduct(foundProduct || null);
+    }
+  }, [data, productID]);
+
+  // --- Effect 3: Initialize Product Images/Color ---
+  useEffect(() => {
+    if (product) {
+      setmainimg(product.imageURL);
+      const initialImages = product.colors?.[0]?.images ?? [];
+      setAllproductimagesofvarient(initialImages);
+      
+      // Default selections
+      setcolor(product.colors?.[0]?.name || ""); 
+      setsize(0);
+      setQuantity(1);
+
+      window.scrollTo({ top: 5 });
+    }
+  }, [product]);
 
   const handleAddToCart = () => {
-
     if (size !== 0 && color !== "") {
       const selectedproduct = {
         id: product.id + color + size,
@@ -82,47 +94,46 @@ setAllproductimagesofvarient(product?.colors?.[0]?.images)
         quantity: quantity,
         selectedcolor: color,
         selectedsize: size,
-      }
-      dispatch(addTocart(selectedproduct))
-      setIsAddedToCart(true)
+      };
+      dispatch(addTocart(selectedproduct));
+      setIsAddedToCart(true);
       setTimeout(() => {
-        setIsAddedToCart(false)
-      }, 1000)
-
-
+        setIsAddedToCart(false);
+      }, 1000);
     } else {
-
-      alert("please select color and size before adding to cart")
-
+      alert("Please select color and size before adding to cart");
     }
-
-
-  }
+  };
 
   const toggleWishlist = () => {
-    setIsWishlisted(!isWishlisted)
-  }
+    setIsWishlisted(!isWishlisted);
+  };
 
   const StarRating = ({ rating }) => {
     return (
       <div className="star-rating">
         {[...Array(5)].map((_, index) => (
           <FontAwesomeIcon
-            key={product.id+index+"SR"}
-            icon={index < rating ? faStar : farHeart}
+            key={product.id + index + "SR"}
+            // Using farStar for empty stars (better UI), change back to farHeart if you prefer hearts
+            icon={index < rating ? faStar : farStar} 
             className={index < rating ? 'star-filled' : 'star-empty'}
           />
         ))}
       </div>
-    )
-  }
-//console.log(product)
-if (!fetched_product || fetched_product.length === 0) return window.history.back();
+    );
+  };
+
+  // --- LOGIC FIX 3: Loading Screen ---
+  if (loading) return <div className="loading-spinner">Loading Product...</div>; 
+  
+  // --- LOGIC FIX 4: Error Handling ---
+  if (!product) return <div className="error-msg">Product not found. <button onClick={() => navigate('/allproducts')}>Go Back</button></div>;
+
   return (
     <div className="Product-details-mainproductdetail">
       <Navbardesktop />
 
-      {/* Breadcrumb Navigation */}
       <div className="product-breadcrumb">
         <div className="breadcrumb-container">
           <a href="/" className="breadcrumb-link">Home</a>
@@ -133,7 +144,6 @@ if (!fetched_product || fetched_product.length === 0) return window.history.back
         </div>
       </div>
 
-      {/* Hero Section */}
       <div className="product-hero">
         <div className="hero-background"></div>
         <div className="productDetail-hero-content">
@@ -169,42 +179,16 @@ if (!fetched_product || fetched_product.length === 0) return window.history.back
           </div>
 
           <div className="thumbnail-gallery">
-
-
-            {
-
-              Allproductimagesofvarient.map((varientimg,index) => {
-
-                return (
-
-                  <img
-                    src={varientimg}
-                    alt="1stimage"
-                    key={index+"ti"}
-                    loading="lazy"
-                    decoding="async"
-                    className={`productimgs ${mainimg === varientimg ? 'aactive' : ''}`}
-                    onClick={() => {
-
-                      setmainimg(varientimg)
-                    }}
-                  />
-
-
-                )
-
-
-
-
-
-
-              })
-
-
-
-            }
-
-
+            {Allproductimagesofvarient.map((varientimg, index) => (
+              <img
+                src={varientimg}
+                alt="thumbnail"
+                key={index + "ti"}
+                loading="lazy"
+                className={`productimgs ${mainimg === varientimg ? 'aactive' : ''}`}
+                onClick={() => setmainimg(varientimg)}
+              />
+            ))}
           </div>
         </div>
 
@@ -230,28 +214,21 @@ if (!fetched_product || fetched_product.length === 0) return window.history.back
           <div className="selection-section">
             <h3>Color: <span className="selected-value">{color || 'Select a color'}</span></h3>
             <div className="color-options">
-
-              {product.colors.map((product,index) => {
-
-
-                return (
-                  <div className={`color-option ${color === product.name ? 'active' : ''}`}
-                  key={index+"cs"} onClick={() => {
-                  
-
-                    setAllproductimagesofvarient(product.images)
-                    //console.log("productimglink",AllproductimagesofColor)
-                    setcolor(product.name)
-                  }}>
-                    <div className="color-circle black" style={{backgroundColor:product.name.toLowerCase()}}></div>
-                    <span>{product.name}</span>
-                  </div>
-
-                )
-
-              })
-              }
-
+              {/* LOGIC FIX 5: Changed variable name to 'colorOption' to avoid shadowing 'product' */}
+              {product.colors.map((colorOption, index) => (
+                <div
+                  className={`color-option ${color === colorOption.name ? 'active' : ''}`}
+                  key={index + "cs"}
+                  onClick={() => {
+                    setAllproductimagesofvarient(colorOption.images);
+                    setcolor(colorOption.name);
+                    if(colorOption.images.length > 0) setmainimg(colorOption.images[0]);
+                  }}
+                >
+                  <div className="color-circle" style={{ backgroundColor: colorOption.name.toLowerCase() }}></div>
+                  <span>{colorOption.name}</span>
+                </div>
+              ))}
             </div>
           </div>
 
@@ -261,7 +238,7 @@ if (!fetched_product || fetched_product.length === 0) return window.history.back
             <div className="sizediv">
               {product.sizes.map((sizeOption) => (
                 <div
-                  key={sizeOption+"s"}
+                  key={sizeOption + "s"}
                   className={`sizebox ${size === sizeOption ? 'aactive' : ''}`}
                   onClick={() => setsize(sizeOption)}
                 >
@@ -290,41 +267,30 @@ if (!fetched_product || fetched_product.length === 0) return window.history.back
               <FontAwesomeIcon icon={faShoppingCart} />
               {isAddedToCart ? 'Added to Cart!' : 'Add to Cart'}
             </button>
-            <button className="Product-details-buy-now-btn" 
-             onClick={() => navigate('/shoppingcart')}
-            >
+            <button className="Product-details-buy-now-btn" onClick={() => navigate('/shoppingcart')}>
               Buy Now
             </button>
           </div>
 
-          {/* Product Highlights */}
+          {/* Highlights */}
           <div className="product-highlights">
             <div className="highlight-item">
               <FontAwesomeIcon icon={faTruck} />
-              <div>
-                <h4>Free Shipping</h4>
-                <p>On orders over $100</p>
-              </div>
+              <div><h4>Free Shipping</h4><p>On orders over $100</p></div>
             </div>
             <div className="highlight-item">
               <FontAwesomeIcon icon={faUndo} />
-              <div>
-                <h4>Easy Returns</h4>
-                <p>30 day return policy</p>
-              </div>
+              <div><h4>Easy Returns</h4><p>30 day return policy</p></div>
             </div>
             <div className="highlight-item">
               <FontAwesomeIcon icon={faShieldAlt} />
-              <div>
-                <h4>Secure Payment</h4>
-                <p>100% secure checkout</p>
-              </div>
+              <div><h4>Secure Payment</h4><p>100% secure checkout</p></div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Product Tabs */}
+      {/* --- RESTORED TABS SECTION --- */}
       <div className="product-tabs">
         <div className="tabs-header">
           <button
@@ -403,7 +369,7 @@ if (!fetched_product || fetched_product.length === 0) return window.history.back
               </div>
               <div className="reviews-list">
                 {reviews.map(review => (
-                  <div key={review.id+"R"} className="review-item">
+                  <div key={review.id + "R"} className="review-item">
                     <div className="review-header">
                       <h4>{review.name}</h4>
                       <StarRating rating={review.rating} />
@@ -417,19 +383,13 @@ if (!fetched_product || fetched_product.length === 0) return window.history.back
           )}
         </div>
       </div>
+      {/* --- END TABS SECTION --- */}
 
-      
-< Related_product_card product={product} setproduct={setproduct}  />
+      <Related_product_card product={product} setproduct={setProduct} />
 
-      {/* Footer */}
       <Footer />
-
-      
     </div>
-  )
-
- 
-
+  );
 }
 
-export default memo(Productdetail)
+export default memo(Productdetail);

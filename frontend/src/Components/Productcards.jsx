@@ -78,7 +78,7 @@ const Productcards = ({ Data, category }) => {
     try {
       await dispatch(productselectedfeature(Product));
       dispatch(RelatedProductsFeature(Data));
-      navigate("/product");
+      navigate(`/product?id=${Product.id}`);
     } catch (error) {
       console.error("Error navigating to product:", error);
     }
